@@ -50,7 +50,7 @@ class AffiliateMiddleware(MiddlewareMixin):
         new_aid, prev_aid, prev_aid_dt = None, None, None
         if app_settings.SAVE_IN_SESSION:
             session = getattr(request, 'session', None)
-            if not session:
+            if session is None:
                 raise ImproperlyConfigured(
                     "session attribute should be set for request. Please add "
                     "'django.contrib.sessions.middleware.SessionMiddleware' "
